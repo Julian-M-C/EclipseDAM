@@ -1,0 +1,14 @@
+package org.junit;
+
+public class Test {
+	
+	@Test
+	public void test1() {
+		
+	}
+	
+	@Test
+	public void test2() {
+		
+	}
+}

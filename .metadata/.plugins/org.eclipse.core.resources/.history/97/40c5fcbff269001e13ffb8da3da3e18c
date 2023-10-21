@@ -1,0 +1,89 @@
+package XML;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+public class XPathEjemplo {
+
+	public static void main(String[] args) {
+		
+		try {
+			File inputFile = new File ("C:\\Users\\julia\\Desktop\\DAM\\Acceso a datos\\Tema 3 Trabajo con fichetos XML\\inputxml.txt");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newNSInstance();
+			
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			
+			Document doc = null;
+			try {
+				doc = dBuilder.parse(inputFile);
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			doc.getDocumentElement().normalize();
+			
+			XPath xPath = XPathFactory.newInstance().newXPath();
+			
+			String expression = "/class/student";
+			NodeList nodeList = null;
+			try {
+				nodeList = (NodeList) xPath.compile(expression).evaluate(
+						doc, XPathConstants.NODESET);
+			} catch (XPathExpressionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node nNode = nodeList.item(i);
+				System.out.println("\nCurrent Element :" + nNode.getNodeName());
+				
+				if (nNode.getNodeType()== Node.ELEMENT_NODE) {
+					Element element = (Element) nNode;
+					System.out.println("Student roll no :" + element.getAttribute("rollno"));
+					System.out.println("First Name : "
+							+ element
+							.getElementsByTagName("fistname")
+							.item(0)
+							.getTextContent());
+					System.out.println("Last Name : "
+							+ element
+							.getElementsByTagName("lastname")
+							.item(0)
+							.getTextContent());
+					System.out.println("Nick Name : "
+							+ element
+							.getElementsByTagName("nickname")
+							.item(0)
+							.getTextContent());
+					System.out.println("Marks : "
+							+ element
+							.getElementsByTagName("marks")
+							.item(0)
+							.getTextContent());
+				}
+			}
+		} catch (ParserConfigurationException e) {
+			// TODO: handle exception
+		}
+
+	}
+
+}

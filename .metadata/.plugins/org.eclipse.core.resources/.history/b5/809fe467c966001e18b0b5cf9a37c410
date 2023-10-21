@@ -1,0 +1,24 @@
+package DataInputStream;
+
+import java.io.*;
+
+public class InputYOutput {
+
+	public static void main(String[] args) {
+		
+		try {
+			
+		
+		    DataOutputStream dataOutputStream = new DataOutputStream(
+		         new
+		FileOutputStream("C:\\Users\\julia\\eclipse-workspace\\Tema2AccesoDatos\\src\\PushbakReader\\ficheroBinario.data"));
+		    dataOutputStream.writeInt(123);
+		    dataOutputStream.writeFloat(123.45F);
+		    dataOutputStream.writeLong(789);
+		    dataOutputStream.close();
+
+		} catch (IOException e) {
+			 e.printStackTrace();
+		}
+	}
+}
