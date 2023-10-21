@@ -1,19 +1,6 @@
 INDEX VERSION 1.134+C:\Users\julia\eclipse-workspace\.metadata\.plugins\org.eclipse.jdt.core
-2117159061.index
-3742806106.index
-3130388194.index
-2118086800.index
-2882541589.index
-3094903240.index
-3176929416.index
-1382934245.index
-3476975651.index
-3704286805.index
-1939382273.index
+2723114013.index
+3596889666.index
 1865797976.index
-848782873.index
-71487630.index
-424743418.index
-382832979.index
-1723214920.index
-890262952.index
+744987645.index
+3247533310.index
